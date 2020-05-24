@@ -5,17 +5,16 @@ import (
     "testing"
 )
 
-func TestMaze_BFS(t *testing.T) {
+func TestMaze_Djikstra(t *testing.T) {
     var (
         m *Maze
         startPoint *Point
     )
-
     /*
-    A _ _
-    _ X _
-    _ _ B
-     */
+       A _ _
+       _ X _
+       _ _ B
+    */
     setupRegular := func() {
         points := make(map[string]*Point, 0)
         startPoint = makePoint( points, 0, 0, false, true, false)
@@ -34,10 +33,10 @@ func TestMaze_BFS(t *testing.T) {
     }
 
     /*
-    A X _
-    _ X _
-    _ X B
-     */
+       A X _
+       _ X _
+       _ X B
+    */
     setupImpossible := func() {
         points := make(map[string]*Point, 0)
         startPoint = makePoint( points, 0, 0, false, true, false)
@@ -55,28 +54,16 @@ func TestMaze_BFS(t *testing.T) {
         }
     }
 
-    t.Run("bfs traverse", func(t *testing.T) {
+    t.Run("djikstra traverse", func(t *testing.T) {
         setupRegular()
-        path, err := m.BFS()
+        path, err := m.Djikstra()
         assert.Nil(t, err)
         assert.Equal(t, 7, len(path))
     })
-    t.Run("bfs traverse impossible", func(t *testing.T) {
+    t.Run("djikstra traverse impossible", func(t *testing.T) {
         setupImpossible()
-        path, err := m.BFS()
+        path, err := m.Djikstra()
         assert.NotNil(t, err)
         assert.Equal(t, 0, len(path))
     })
-}
-
-func makePoint(points map[string]*Point, x,y int, isWall, isStart, isDest bool) *Point{
-   p := &Point{
-        X:             x,
-        Y:             y,
-        IsWall:        isWall,
-        IsStart:       isStart,
-        IsDestination: isDest,
-    }
-    points[p.getKey()] = p
-    return p
 }

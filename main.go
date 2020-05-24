@@ -23,12 +23,21 @@ func main() {
         fmt.Println("Your skeleton will lie in the Maze forever.")
         return
     }
-    fmt.Printf("BFS path: %s \n", maze.PrintPath(bfsPath))
+    fmt.Printf("BFS(%d) path: %s \n",
+        len(bfsPath), maze.PrintPath(bfsPath))
 
     dfsPath, err := m.DFS()
     if err != nil {
         fmt.Println("Your skeleton will lie in the Maze forever.")
         return
     }
-    fmt.Printf("DFS path: %s \n", maze.PrintPath(dfsPath))
+    fmt.Printf("DFS(%d) path: %s \n",
+        len(dfsPath), maze.PrintPath(dfsPath))
+
+    djikstraPath, err := m.Djikstra()
+    if err != nil {
+        fmt.Println("Your skeleton will lie in the Maze forever.")
+        return
+    }
+    fmt.Printf("Djikstra(%d) path: %s \n", len(djikstraPath), maze.PrintPath(djikstraPath))
 }

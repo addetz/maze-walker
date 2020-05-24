@@ -59,12 +59,12 @@ func TestMaze_DFS(t *testing.T) {
         setupRegular()
         path, err := m.DFS()
         assert.Nil(t, err)
-        assert.Equal(t, len(path),5)
+        assert.Equal(t, 5, len(path))
     })
     t.Run("dfs traverse impossible", func(t *testing.T) {
         setupImpossible()
         path, err := m.DFS()
         assert.NotNil(t, err)
-        assert.Equal(t, len(path),0)
+        assert.Equal(t, 0, len(path))
     })
 }

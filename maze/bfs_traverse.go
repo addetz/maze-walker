@@ -26,7 +26,6 @@ func (m *Maze) bfs_traverse(cp *Point, tr *traverser, path []*Point) ([]*Point, 
     if tr.isVisitComplete() {
         return []*Point{}, errors.New("destination unreachable")
     }
-
     // change the current point - BFS pops the first node like a queue
     cp = tr.popFirstNode()
     // next point has already been visited
