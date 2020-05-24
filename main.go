@@ -18,10 +18,17 @@ func main() {
         return
     }
     fmt.Printf("Maze from %s was created successfully \n", inputPath)
-    path, err := m.BFS()
+    bfsPath, err := m.BFS()
     if err != nil {
         fmt.Println("Your skeleton will lie in the Maze forever.")
         return
     }
-    fmt.Printf("BFS path: %s \n", maze.PrintPath(path))
+    fmt.Printf("BFS path: %s \n", maze.PrintPath(bfsPath))
+
+    dfsPath, err := m.DFS()
+    if err != nil {
+        fmt.Println("Your skeleton will lie in the Maze forever.")
+        return
+    }
+    fmt.Printf("DFS path: %s \n", maze.PrintPath(dfsPath))
 }

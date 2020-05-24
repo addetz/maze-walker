@@ -11,7 +11,9 @@ If you cannot get to the destination, I will tell you `Your skeleton will lie in
     1. Maze walls are defined with the letter `X`.
     1. Maze points are split with a space.
     1. New constants can be configured in `config.go`
-1. The maze walker finds a solution to the maze using `BFS` and `DFS`. 
+1. The maze walker finds a solution to the maze using: 
+    - `BFS`- put all nodes in a queue and pop first node 
+    - `DFS`- put all nodes in a stack and pop last node  
 1. The solution path will contain coordinates of how to get out of the maze 
 indexed at `[0,0]` in the upper left corner.
 1. We only support rectangular mazes. Please don't confuse us. 
